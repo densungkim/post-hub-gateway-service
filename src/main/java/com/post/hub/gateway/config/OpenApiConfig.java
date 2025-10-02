@@ -23,7 +23,13 @@ import java.util.List;
         info = @io.swagger.v3.oas.annotations.info.Info(
                 title = "POST_HUB REST API",
                 version = "1.0",
-                description = "Gateway-service REST API "
+                description = """
+                        Gateway-service REST API
+                        
+                        The Gateway Service is responsible only for routing requests and does not provide any direct REST endpoints.
+                        
+                        To explore available APIs, please use the "Select a definition" dropdown in the top-right corner of Swagger UI and choose another service.
+                        """
         ),
         security = {@SecurityRequirement(name = HttpHeaders.AUTHORIZATION)}
 )

@@ -105,17 +105,17 @@ mvn spring-boot:run
 
 ### B) Local Docker (profile: [local](src/main/resources/application-local.properties))
 
-This repo includes [iam-service.sh](docker/iam-service.sh) (entrypoint) and [Dockerfile](docker/Dockerfile).
+This repo includes [iam-service.sh](docker/gateway-service.sh) (entrypoint) and [Dockerfile](docker/Dockerfile).
 
 ```bash
 # build jar file
-mvn clean install -Dgroups='!integration'
+mvn clean install
 
 # build image (context = repo root)
-docker build -f docker/Dockerfile -t post-hub/iam-service .
+docker build -f docker/Dockerfile -t post-hub/gateway-service .
 
 # run container
-docker run -d --name iam-service --network app-network -p 8189:8189 post-hub/iam-service
+docker run -d --name gateway-service --network app-network -p 8189:8189 post-hub/gateway-service
 ```
 
 ### C) Production — Docker (profile: [prod](src/main/resources/application-prod.properties))
@@ -123,6 +123,7 @@ docker run -d --name iam-service --network app-network -p 8189:8189 post-hub/iam
 For production you must provide environment variables:
 
 - CONSUL_HOST
+- SERVER_IP
 
 Minimal example:
 
